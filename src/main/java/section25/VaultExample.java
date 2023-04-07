@@ -1,5 +1,9 @@
 package section25;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  * @author : iyeong-gyo
  * @package : section25
@@ -10,7 +14,14 @@ public class VaultExample {
   public static final int MAX_PASSORD = 9999;
 
   public static void main(String[] args) {
+    Random random = new Random();
+    Vault vault = new Vault(random.nextInt(MAX_PASSORD));
 
+    List<Thread> threads = new ArrayList<>();
+    threads.add(new AscendingHackerThread(vault));
+    threads.add(new DecendingHackerThread(vault));
+    threads.add(new PoliceThread());
+    threads.forEach(Thread::start);
   }
 
   private static class Vault {
@@ -89,12 +100,14 @@ public class VaultExample {
       for (int i = 10; i > 0; i--) {
         try {
           Thread.sleep(1000);
+          System.out.println("i = " + i);
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
         System.out.println("");
       }
       System.out.println("Game over for you hacker");
+      System.exit(0);
     }
   }
 }
