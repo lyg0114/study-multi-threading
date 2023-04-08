@@ -12,9 +12,9 @@ public class InterruptThread2 {
   public static void main(String[] args) throws InterruptedException {
     Thread thread = new Thread(
         new LongComputatonTask(new BigInteger("20000"), new BigInteger("1000000000")));
+    thread.setDaemon(true);
     thread.setName("big");
     thread.start();
-    thread.sleep(3000);
     thread.interrupt();
   }
 
