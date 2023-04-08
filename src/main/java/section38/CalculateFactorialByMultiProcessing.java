@@ -10,14 +10,14 @@ import java.util.List;
  * @package : section38
  * @since : 2023/04/08
  */
-public class CalculateFactorial {
+public class CalculateFactorialByMultiProcessing {
 
   public static void main(String[] args) {
     List<Long> inputNumbers
         = Arrays.asList(10000000000000L, 3435L, 35435L, 2324L, 4656L, 23L, 2435L, 5566L);
     List<FactorialThread> threads = new ArrayList<>();
     inputNumbers.forEach(i -> threads.add(new FactorialThread(i)));
-    threads.forEach(CalculateFactorial::executeThread);
+    threads.forEach(CalculateFactorialByMultiProcessing::executeThread);
 
     for (int i = 0; i < inputNumbers.size(); i++) {
       FactorialThread factorialThread = threads.get(i);
