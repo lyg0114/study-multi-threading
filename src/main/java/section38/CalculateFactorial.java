@@ -17,14 +17,7 @@ public class CalculateFactorial {
         = Arrays.asList(10000000000000L, 3435L, 35435L, 2324L, 4656L, 23L, 2435L, 5566L);
     List<FactorialThread> threads = new ArrayList<>();
     inputNumbers.forEach(i -> threads.add(new FactorialThread(i)));
-    threads.forEach(Thread::start);
-    threads.forEach(i -> {
-      try {
-        i.join(2000);
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
-    });
+    threads.forEach(CalculateFactorial::executeThread);
 
     for (int i = 0; i < inputNumbers.size(); i++) {
       FactorialThread factorialThread = threads.get(i);
@@ -35,6 +28,15 @@ public class CalculateFactorial {
       } else {
         System.out.println("The calculation for " + inputNumbers.get(i) + " is still in progress");
       }
+    }
+  }
+
+  private static void executeThread(FactorialThread i) {
+    try {
+      i.start();
+      i.join(2000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
     }
   }
 
