@@ -43,13 +43,13 @@ public class CalculateFactorialByMultiProcessing {
   }
 
   private static void executeThread(FactorialThread i) {
-    i.setDaemon(true);
-    i.start();
     try {
       i.join(2000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
+    i.setDaemon(true);
+    i.start();
   }
 
   private static class FactorialThread extends Thread {
