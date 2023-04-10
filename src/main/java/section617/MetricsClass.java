@@ -18,7 +18,6 @@ public class MetricsClass {
     businessLogicThread1.start();
     businessLogicThread2.start();
     metricsPrinter.start();
-
   }
 
   private static class MetricsPrinter extends Thread {
@@ -58,7 +57,7 @@ public class MetricsClass {
         long start = System.currentTimeMillis();
 
         try {
-          Thread.sleep(1000);
+          Thread.sleep(random.nextInt(10));
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
