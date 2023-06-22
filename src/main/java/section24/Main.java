@@ -12,7 +12,6 @@ public class Main {
       System.out.println("we are now in thread : " + Thread.currentThread().getName());
       System.out.println("Current thread pritiroit is : " + Thread.currentThread().getPriority());
     });
-
     thread.setName("New Worker Thread");
     thread.setPriority(Thread.MAX_PRIORITY);
 
@@ -21,7 +20,6 @@ public class Main {
     thread.start();
     System.out.println("we are now in thread : " + Thread.currentThread().getName()
         + " ## after starting a new thread");
-
     Thread.sleep(1000);
   }
 }
