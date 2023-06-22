@@ -9,7 +9,7 @@ import java.util.Random;
  * @package : section25
  * @since : 2023/04/07
  */
-public class VaultExample {
+public class VaultExampleV1 {
 
   public static final int MAX_PASSORD = 9999;
 
