@@ -1,5 +1,6 @@
 package study;
 
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -11,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ConcurrentHashMapThreadSafetyExample {
 
   public static void main(String[] args) throws InterruptedException {
-    ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+    Map<String, Integer> map = getMap();
 
     // 여러 스레드가 동시에 맵에 요소를 추가하는 작업 수행
     Runnable task = () -> {
@@ -33,11 +34,11 @@ public class ConcurrentHashMapThreadSafetyExample {
     // 맵의 크기 확인
     int size = map.size();
     System.out.println("Map size: " + size);
+  }
 
-    // 맵의 모든 요소 출력
-    for (String key : map.keySet()) {
-      System.out.println(key + ": " + map.get(key));
-    }
+  public static Map<String, Integer> getMap() {
+    return new ConcurrentHashMap<>();
+//    return new HashMap<>();
   }
 }
 
