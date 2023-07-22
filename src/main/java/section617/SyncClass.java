@@ -60,19 +60,15 @@ public class SyncClass {
     private int items = 0;
     Object lock = new Object();
 
-    public void increment() {
-      synchronized (this.lock) {
-        items++;
-      }
+    public synchronized void increment() {
+      items++;
     }
 
-    public void decrement() {
-      synchronized (this.lock) {
-        items--;
-      }
+    public synchronized void decrement() {
+      items--;
     }
 
-    public int getItems() {
+    public synchronized int getItems() {
       synchronized (this.lock) {
         return items;
       }
